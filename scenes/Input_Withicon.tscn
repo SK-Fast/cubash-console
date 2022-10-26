@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/themes/basetheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/themes/stylebox/inputbox_selected_style_left.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/images/InputLeft.png" type="Texture" id=3]
+[ext_resource path="res://assets/themes/stylebox/inputbox_style_left.tres" type="StyleBox" id=5]
+[ext_resource path="res://scripts/LeftInputBase.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "IconJump"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5, -2 ), Vector2( 0, 0 ), Vector2( 5, -5 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 0.0, 5.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "IconType"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 41, 41 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Icon:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="Input_Withicon" type="LineEdit"]
+margin_right = 135.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( -54, -66.993 )
+rect_clip_content = true
+focus_neighbour_top = NodePath("../../../../TypeSelection/Register")
+focus_neighbour_bottom = NodePath("../../Password/Input_Withicon")
+focus_next = NodePath("../../Password/Input_Withicon")
+focus_previous = NodePath("../../../../TypeSelection/Login")
+focus_mode = 1
+theme = ExtResource( 1 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 5 )
+placeholder_text = "Username"
+caret_blink = true
+script = ExtResource( 6 )
+
+[node name="LeftIcon" type="TextureRect" parent="."]
+margin_top = -1.0
+margin_right = 47.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( -56.9858, 13 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="AnimPlay" type="AnimationPlayer" parent="."]
+anims/IconJump = SubResource( 1 )
+anims/IconType = SubResource( 2 )
+anims/RESET = SubResource( 3 )

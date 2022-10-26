@@ -1,0 +1,323 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/images/Landing.png" type="Texture" id=1]
+[ext_resource path="res://assets/themes/stylebox/landing_box.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/images/logo.png" type="Texture" id=3]
+[ext_resource path="res://assets/dynamicfont/heading1.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/dynamicfont/paragraph.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/images/LoginBorder.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/basetheme.tres" type="Theme" id=7]
+[ext_resource path="res://scripts/LinkText.gd" type="Script" id=8]
+[ext_resource path="res://assets/dynamicfont/paragraph-fontawesome.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/themes/transparent.tres" type="Theme" id=10]
+[ext_resource path="res://scripts/pages/login/LoginPage.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Input_Withicon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/images/totp.png" type="Texture" id=13]
+[ext_resource path="res://assets/dynamicfont/subtext.tres" type="DynamicFont" id=14]
+
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="LandingMask" type="TextureRect" parent="."]
+anchor_right = 0.69
+anchor_bottom = 0.932
+margin_right = -79.2001
+margin_bottom = -1.04004
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+stretch_mode = 1
+
+[node name="LogoContainer" type="Panel" parent="."]
+anchor_right = 0.259
+anchor_bottom = 0.171
+margin_left = 25.0
+margin_top = 22.0
+margin_right = 0.47998
+margin_bottom = -2.12
+custom_styles/panel = ExtResource( 2 )
+
+[node name="Logo" type="TextureRect" parent="LogoContainer"]
+anchor_left = 0.109
+anchor_top = 0.207
+anchor_right = 0.914
+anchor_bottom = 0.803
+margin_left = 0.0369987
+margin_top = 0.00699806
+margin_right = -0.0980225
+margin_bottom = 0.00299835
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="LoginPanel" type="Control" parent="."]
+anchor_left = 0.674
+anchor_top = 0.236
+anchor_right = 1.0
+anchor_bottom = 0.74
+margin_left = 0.279968
+margin_top = 0.0800018
+margin_right = -47.0
+margin_bottom = 0.200012
+
+[node name="TypeSelection" type="HBoxContainer" parent="LoginPanel"]
+anchor_right = 1.0
+anchor_bottom = 0.091
+margin_right = -3.05176e-05
+margin_bottom = -0.121002
+custom_constants/separation = 100
+alignment = 1
+
+[node name="Login" type="LinkButton" parent="LoginPanel/TypeSelection"]
+margin_left = 70.0
+margin_right = 122.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 26.3301, 27 )
+focus_neighbour_right = NodePath("../Register")
+focus_neighbour_bottom = NodePath("../../FormContainer/List/Username/Input")
+focus_next = NodePath("../Register")
+theme = ExtResource( 7 )
+custom_colors/font_color_focus = Color( 0.9, 0.9, 0.9, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.9, 0.9, 0.9, 1 )
+custom_colors/font_color_pressed = Color( 0.901961, 0.901961, 0.901961, 1 )
+text = "Login"
+underline = 2
+
+[node name="Register" type="LinkButton" parent="LoginPanel/TypeSelection"]
+margin_left = 222.0
+margin_right = 299.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 26.3301, 27 )
+focus_neighbour_left = NodePath("../Login")
+focus_neighbour_top = NodePath("../../FormContainer/List/LoginButton")
+focus_neighbour_right = NodePath("../../FormContainer/List/Username/GuideText")
+focus_neighbour_bottom = NodePath("../../FormContainer/List/Username/Input")
+focus_next = NodePath("../../FormContainer/List/Username/Input")
+focus_previous = NodePath("../Login")
+focus_mode = 2
+theme = ExtResource( 7 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.9, 0.9, 0.9, 1 )
+text = "Register"
+underline = 2
+script = ExtResource( 8 )
+href = "https://cubash.com/register"
+
+[node name="TextureRect" type="TextureRect" parent="LoginPanel"]
+anchor_right = 1.005
+anchor_bottom = 0.426
+margin_top = 48.0
+margin_right = -0.181671
+margin_bottom = -0.00601196
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="FormContainer" type="Control" parent="LoginPanel"]
+anchor_left = 0.043
+anchor_right = 0.951
+anchor_bottom = 1.157
+margin_left = 0.0758085
+margin_top = 72.0
+margin_right = -0.183868
+margin_bottom = 0.0329895
+
+[node name="List" type="VBoxContainer" parent="LoginPanel/FormContainer"]
+anchor_right = 1.0
+margin_bottom = 40.0
+custom_constants/separation = 20
+
+[node name="Header" type="Label" parent="LoginPanel/FormContainer/List"]
+margin_right = 335.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 4 )
+text = "Login"
+
+[node name="Username" type="VBoxContainer" parent="LoginPanel/FormContainer/List"]
+margin_top = 58.0
+margin_right = 335.0
+margin_bottom = 134.0
+custom_constants/separation = 10
+
+[node name="GuideText" type="Label" parent="LoginPanel/FormContainer/List/Username"]
+margin_right = 335.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Username or e-mail address"
+
+[node name="Input" parent="LoginPanel/FormContainer/List/Username" instance=ExtResource( 12 )]
+focus_neighbour_bottom = NodePath("../../Password/Input")
+focus_next = NodePath("../../Password/Input")
+
+[node name="Icon" type="Label" parent="LoginPanel/FormContainer/List/Username/Input"]
+margin_right = 41.0
+margin_bottom = 41.0
+rect_scale = Vector2( 1, 0.96303 )
+custom_fonts/font = ExtResource( 9 )
+text = ""
+align = 1
+valign = 1
+
+[node name="Password" type="VBoxContainer" parent="LoginPanel/FormContainer/List"]
+margin_top = 154.0
+margin_right = 335.0
+margin_bottom = 230.0
+custom_constants/separation = 10
+
+[node name="GuideText" type="Label" parent="LoginPanel/FormContainer/List/Password"]
+margin_right = 335.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Password"
+
+[node name="Input" parent="LoginPanel/FormContainer/List/Password" instance=ExtResource( 12 )]
+focus_neighbour_top = NodePath("../../Username/Input")
+focus_neighbour_bottom = NodePath("../../LoginButton")
+focus_next = NodePath("Eye")
+focus_previous = NodePath("../../Username/Input")
+secret = true
+secret_character = "•"
+placeholder_text = "Password"
+
+[node name="Eye" type="Button" parent="LoginPanel/FormContainer/List/Password/Input"]
+anchor_left = 1.0
+anchor_top = 0.451
+anchor_right = 1.0
+anchor_bottom = 0.451
+margin_left = -44.9858
+margin_top = -15.491
+margin_right = -1.98584
+margin_bottom = 19.509
+focus_neighbour_top = NodePath("../../../Username/Input")
+focus_neighbour_bottom = NodePath("../../../LoginButton")
+focus_next = NodePath("../../../LoginButton")
+theme = ExtResource( 10 )
+custom_colors/font_color_focus = Color( 0.243137, 0.556863, 0.815686, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.243137, 0.556863, 0.815686, 1 )
+custom_colors/font_color_pressed = Color( 0.186, 0.4247, 0.62, 1 )
+custom_fonts/font = ExtResource( 9 )
+text = ""
+
+[node name="Icon" type="Label" parent="LoginPanel/FormContainer/List/Password/Input"]
+margin_right = 41.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 9 )
+text = ""
+align = 1
+valign = 1
+
+[node name="LoginButton" type="Button" parent="LoginPanel/FormContainer/List"]
+margin_top = 250.0
+margin_right = 335.0
+margin_bottom = 285.0
+focus_neighbour_top = NodePath("../Password/Input")
+focus_neighbour_bottom = NodePath("../../../TypeSelection/Register")
+theme = ExtResource( 7 )
+text = "Login"
+
+[node name="TOTP" type="Control" parent="."]
+visible = false
+anchor_left = 0.674
+anchor_top = 0.157
+anchor_right = 0.965
+anchor_bottom = 0.811
+margin_left = 0.279968
+margin_top = -0.0400009
+margin_right = -0.200073
+margin_bottom = 0.0799561
+
+[node name="FormContainer" type="Control" parent="TOTP"]
+anchor_right = 1.005
+anchor_bottom = 1.017
+margin_right = 0.140015
+margin_bottom = -0.00704956
+
+[node name="TextureRect" type="TextureRect" parent="TOTP/FormContainer"]
+anchor_right = 1.0
+margin_bottom = 93.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="List" type="VBoxContainer" parent="TOTP/FormContainer"]
+anchor_right = 1.0
+anchor_bottom = 0.074
+margin_top = 32.0
+margin_right = 2.0
+margin_bottom = 451.18
+custom_constants/separation = 20
+
+[node name="TextureRect2" type="TextureRect" parent="TOTP/FormContainer/List"]
+margin_right = 375.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+rect_pivot_offset = Vector2( 60, 0 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Header" type="Label" parent="TOTP/FormContainer/List"]
+margin_top = 140.0
+margin_right = 375.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 4 )
+text = "2FA Authentication "
+align = 1
+
+[node name="SubText" type="Label" parent="TOTP/FormContainer/List"]
+margin_top = 198.0
+margin_right = 375.0
+margin_bottom = 279.0
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 14 )
+text = "This account requires that an additional 6 digit verification code is used after signing in. Please open your mobile app to retrieve this one time password and enter it below to access this account."
+align = 1
+autowrap = true
+
+[node name="Password" type="VBoxContainer" parent="TOTP/FormContainer/List"]
+margin_top = 299.0
+margin_right = 375.0
+margin_bottom = 375.0
+custom_constants/separation = 10
+
+[node name="GuideText" type="Label" parent="TOTP/FormContainer/List/Password"]
+margin_right = 375.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Authentication Code"
+
+[node name="Input" parent="TOTP/FormContainer/List/Password" instance=ExtResource( 12 )]
+focus_neighbour_top = NodePath("")
+focus_neighbour_bottom = NodePath("../../LoginButton")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+secret = true
+secret_character = "•"
+placeholder_text = "Authentication Code"
+
+[node name="Icon" type="Label" parent="TOTP/FormContainer/List/Password/Input"]
+margin_right = 41.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 9 )
+text = ""
+align = 1
+valign = 1
+
+[node name="LoginButton" type="Button" parent="TOTP/FormContainer/List"]
+margin_top = 395.0
+margin_right = 375.0
+margin_bottom = 430.0
+focus_neighbour_top = NodePath("../Password/Input")
+theme = ExtResource( 7 )
+text = "Login"
+
+[node name="LoginRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="LoginPanel/FormContainer/List/LoginButton" to="." method="_on_login_requested"]
+[connection signal="pressed" from="TOTP/FormContainer/List/LoginButton" to="." method="_on_login_requested"]
